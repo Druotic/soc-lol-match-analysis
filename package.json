@@ -2,13 +2,16 @@
   "name": "soc-lol-match-analysis",
   "version": "0.0.0",
   "description": "Simple data collection from Riot Game official API. Match history data will be collected and analyzed.",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "James Beavers",
   "license": "BSD",
   "dependencies": {
-    "leagueapi": "~0.4.9"
+    "leagueapi": "~0.4.9",
+    "synchronize": "~0.9.10",
+    "redis": "~0.12.1",
+    "mongoose": "~4.0.2"
   }
 }
