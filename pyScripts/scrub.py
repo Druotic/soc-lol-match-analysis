@@ -18,7 +18,7 @@ def scrub(fn):
     matches = result['matches']
     last_win = -1
     last_loss = -1
-    output_str = "name result timeSinceWin timeSinceLoss\n"
+    output_str = "name win timeSinceWin timeSinceLoss\n"
     for match in matches:
         output_str += player_name
         # convert to seconds (from ms)
@@ -30,10 +30,10 @@ def scrub(fn):
         time_since_loss = match_creation - last_loss if last_loss != -1 else -1
         # print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(last_win)) + " " + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(last_loss))
         if match['participants'][0]['stats']['winner']:
-            output_str += " W"
+            output_str += " 1"
             last_win = end_time
         else:
-            output_str += " L"
+            output_str += " 0"
             last_loss = end_time
         output_str += " " + str(time_since_win) + " " + str(time_since_loss) + "\n"
     with open(output_fn, 'w') as f:
