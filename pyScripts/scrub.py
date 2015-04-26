@@ -1,5 +1,4 @@
-import sys, getopt
-import json, time
+import sys, getopt, json
 
 def main(argv):
     try:
