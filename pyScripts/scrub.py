@@ -1,6 +1,5 @@
-import sys, getopt, bson
-
-player_name = None
+import sys, getopt
+import json, time
 
 def main(argv):
     try:
@@ -15,18 +14,43 @@ def main(argv):
 
 def scrub(fn):
     output_fn = fn + ".scrubbed"
-    matches = read_sort_matches(fn)
-    print matches.name
+    result = read_sort_matches(fn)
+    player_name = result['name']
+    matches = result['matches']
+    last_win = -1
+    last_loss = -1
+    output_str = "name result timeSinceWin timeSinceLoss\n"
+    for match in matches:
+        output_str += player_name
+        # convert to seconds (from ms)
+        match_creation = match['matchCreation']/1000
+        match_duration = match['matchDuration']
+        end_time = match_creation + match_duration
+
+        time_since_win = match_creation - last_win if last_win != -1 else 0
+        time_since_loss = match_creation - last_loss if last_win != -1 else 0
+        # print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(last_win)) + " " + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(last_loss))
+        if match['participants'][0]['stats']['winner']:
+            output_str += " W"
+            last_win = end_time
+        else:
+            output_str += " L"
+            last_loss = end_time
+        output_str += " " + str(time_since_win) + " " + str(time_since_loss) + "\n"
+    with open(output_fn, 'w') as f:
+        print "writing to " + output_fn
+        f.write(output_str)
 
 def read_sort_matches(fn):
-    matches = None
+    player = None
     with open(fn) as file:
-        player = bson.loads(file)
-        print str(player)
-        player_name = player.name
-        matches = player.matches
-        matches = sorted(matches, key=lambda match: match.matchCreation , reverse=False)
-    return {name: player_name, matches: matches}
+        player = json.load(file)
+    matches = player['matches']
+    matches = sorted(matches, key=lambda match: match['matchCreation'] , reverse=False)
+    return {'name': player['name'], 'matches': matches}
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+
+
+#output format: <name> <W/L> <timeSinceWin> <timeSinceLoss>
