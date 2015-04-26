@@ -2,7 +2,7 @@
   "name": "soc-lol-match-analysis",
   "version": "0.0.0",
   "description": "Simple data collection from Riot Game official API. Match history data will be collected and analyzed.",
-  "main": "index.coffee",
+  "main": "pullData.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

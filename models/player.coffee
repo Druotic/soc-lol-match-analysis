@@ -7,3 +7,4 @@ playerSchema = new mongoose.Schema({
 })
 
 exports.Player = mongoose.model('Player', playerSchema)
+exports.mongoose = mongoose
