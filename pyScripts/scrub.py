@@ -52,4 +52,4 @@ if __name__ == "__main__":
     main(sys.argv[1:])
 
 
-#output format: <name> <W/L> <timeSinceWin> <timeSinceLoss>
+#output format: <name> <win> <timeSinceWin> <timeSinceLoss>
