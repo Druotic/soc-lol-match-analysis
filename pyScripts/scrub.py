@@ -1,4 +1,4 @@
-import sys, getopt, json
+import sys, getopt, bson
 
 player_name = None
 
@@ -21,7 +21,8 @@ def scrub(fn):
 def read_sort_matches(fn):
     matches = None
     with open(fn) as file:
-        player = json.load(file)
+        player = bson.loads(file)
+        print str(player)
         player_name = player.name
         matches = player.matches
         matches = sorted(matches, key=lambda match: match.matchCreation , reverse=False)
