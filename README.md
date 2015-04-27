@@ -2,6 +2,12 @@ Pre-reqs:
 
 For pulling data from league API - must have mongodb running.
 
+(For graphing) Create an account with Plotly - https://plot.ly/python/getting-started/ and setup credentials,
+api key, etc.
+
+Getting Started:
+
+Install dependencies - `pip install -r pyScripts/requirements.txt`
 
 To run scrub.py - `scrub.py <file 1> ..<file n>`
 <file 1>.scrubbed ... <file n>.scrubbed will be written.
