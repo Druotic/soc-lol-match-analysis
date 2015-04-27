@@ -40,3 +40,9 @@ Before running `scrub.py`, I manually (bash) removed the ObjectID field from the
 
 `players/<name>.json.scrubbed` files contain one line per game in the format of  
 `<name> <win> <timeSinceWin> <timeSinceLoss>`
+
+**To graph**  
+`pyScripts/graph<version>.py players/<name>.json.scrubbed`  
+For the most interesting graph(imo), use graph_diff_30.py
+
+The resulting graph(s) should pop up in a new tab(s) of your default browser if you have everything configured properly.
