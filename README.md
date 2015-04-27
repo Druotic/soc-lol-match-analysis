@@ -23,17 +23,20 @@ Getting Started:
   
   `pip install -r pyScripts/requirements.txt`
 
-To run scrub.py  
+**To pull API data**  
+`npm install`  
+`coffee pullData.coffee`
+
+Matches are written to mongo, the database will be named 'soc-lol-analysis' database with 'players' collection. Note: There is a bug I didn't take the time to fix - the program hangs when trying to pull multiple players data, it can only pull one player at a time.  So, I pulled for one player, commented out that player, then ran for the next, and so on (for 10 players). If extending this further to pull 100s or 1000s of players' match data, obviously this would need to be fixed.
+
+`players/<name>.json` files are just sample data pulled from mongo after the API pull (using some simple bash)
+
+Before running `scrub.py`, I manually (bash) removed the ObjectID field from the resulting files so that they are truly JSON instead of BSON.  This was me being lazy and not wanting to parse BSON.
+
+
+**To run scrub.py**
 `scrub.py <file 1> ..<file n>`  
 `<file 1>.scrubbed ... <file n>.scrubbed` will be created.
-
-For pulling data - `npm install` and `coffee pullData.coffee` and matches are written to mongo,
-soc-lol-analysis database, players collection. Note: There is a bug I didn't take the time to fix - 
-the program hangs when trying to pull multiple players data, it can only pull one player at a time.  So,
-I pulled for one player, commented out that player, then ran for the next, and so on (for 10 players). If
-extending this further to pull 100s or 1000s of players' match data, obviously this would need to be fixed.
-
-`players/<name>.json` files are just sample data pulled from mongo after the API pull  
 
 `players/<name>.json.scrubbed` files contain one line per game in the format of  
 `<name> <win> <timeSinceWin> <timeSinceLoss>`
