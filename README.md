@@ -1,3 +1,12 @@
+Introduction
+
+League of Legends match history analysis completed as part of social computing course project. Some of this
+code was written hastily, so there are some horribly copy/pasted areas (entire copies of graph.py for example).
+
+There is also a bug with pullData.coffee (see below for more info) that I worked around via manual
+intervention for the sake of time/delivery.
+
+
 Pre-reqs: 
 
 For pulling data from league API - must have mongodb running.
