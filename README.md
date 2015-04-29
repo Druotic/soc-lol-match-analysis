@@ -46,3 +46,9 @@ Before running `scrub.py`, I manually (bash) removed the ObjectID field from the
 For the most interesting graph(imo), use graph_diff_30.py
 
 The resulting graph(s) should pop up in a new tab(s) of your default browser if you have everything configured properly.
+
+Analysis - Paper
+============
+
+A PDF of my analysis/writeup is included [here](r3.pdf)
+
